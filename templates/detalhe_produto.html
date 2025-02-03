@@ -1,0 +1,93 @@
+{% extends 'core/base.html' %}
+{% block title %}Detalhes do Produto{% endblock %}
+{% block wrapper %}
+
+
+<style>
+    
+    .detalhe-produto {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .detalhe-produto h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    
+    .produto-imagem img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    
+    .produto-info {
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .produto-info h2, .produto-info h3 {
+        margin-top: 10px;
+        color: #333;
+    }
+
+    .produto-info p {
+        font-size: 16px;
+        color: #555;
+        margin: 5px 0;
+    }
+
+    
+    .botao-voltar {
+        margin-top: 30px;
+    }
+
+    .btn-voltar {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .btn-voltar:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+    <div class="detalhe-produto">
+        <h1>{{ produto.nome }}</h1>
+              
+        <div class="produto-imagem">
+            <img src="{{ produto.imagem_grande }}" alt="{{ produto.nome }}">
+        </div>
+        
+        <div class="produto-info">
+            <h2>Informações do Produto </h2>
+            <p><strong>Ingredientes:</strong> {{ produto.ingredientes }}</p></h2>
+            
+            <h3>Informação Nutricional (por 100g)</h3>
+            <p><strong>Calorias:</strong> {{ produto.calorias }} kcal</p>
+            <p><strong>Gorduras:</strong> {{ produto.gorduras }} g</p>
+            <p><strong>Proteínas:</strong> {{ produto.proteinas }} g</p>
+            <p><strong>Carbohidratos:</strong> {{ produto.carboidratos }} g</p>
+            
+            <p><strong>Nutri-Score:</strong> {{ produto.nutri_score }}</p>
+            <p><strong>Categoria:</strong> {{ produto.categoria | join(', ') }}</p>
+            
+        </div>
+      
+        <div class="botao-voltar">
+            <a href="{{ produto.url }}" target="_blank">API Url</a><br><br>
+            <a href="/">Voltar à Página Inicial</a>
+        </div>
+    </div>
+
+{% endblock %}

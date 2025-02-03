@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% block title %}Formulário{% endblock %}
+    {% block wrapper %}
+
+        {% include 'core/header.html' %}
+
+    <style>
+        #confirmacao{display: none;}
+    </style>
+
+    <script>
+
+        function msg(){
+            var mensagem;
+            mensagem=document.getElementById('confirmacao');
+            event.preventDefault();
+            mensagem.style = "display:block";
+
+        }
+
+    </script>
+
+
+    <div id="a2">
+
+        
+        <form id="contactForm">
+            <h2>Formulário:</h2>
+            
+            <label for="nome">Nome: </label><input type="text" name="nome" placeholder="nome..."> 
+            <label for="email">Email:</label><input type="email" name="email" placeholder="email...">
+            <label for="nome">Assunto:</label><input type="text" name="assunto" placeholder="assunto...">
+            <p><textarea name="Observações" rows="5" cols="80" placeholder="Mensagem..."></textarea></p>
+            <button type="submit" onclick="msg()">enviar</button>
+        </form>
+        <p  id="confirmacao">Mensagem enviada com sucesso</p>
+
+    </div>
+
+        {% include 'core/footer.html' %}
+
+    {% endblock %}

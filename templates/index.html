@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% block title %}Página Inicial{% endblock %}
+{% block wrapper %}
+
+    {% include 'core/header.html' %}
+
+
+    <div id="div1">
+        {% for produto in produtos %}
+        <div class="foto">
+            <a href="{{ url_for('detalhe_produto', product_id=produto['id']) }}">
+                <img src="{{ produto.imagem }}" alt="{{ produto.nome }}" title="Click para mais detalhes">
+            </a>
+           
+            <h4>{{ produto.nome }}</h4>
+            <p>Nutri-Score: {{ produto.score }}</p>
+            <p>Categorias: {{ produto.categorias | join(', ') }}</p>
+            
+            
+        </div>
+        {% endfor %}
+    </div>
+
+    {% include 'core/footer.html' %}
+
+{% endblock %}

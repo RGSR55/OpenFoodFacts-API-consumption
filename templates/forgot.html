@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block title %}Recuperação Password{% endblock %}
+    {% block wrapper %}
+
+        {% include 'core/header.html' %}
+
+        
+
+    <div class="container">
+        <p style= "color:red; font-weight: bold;">{% if msg %} {{msg}} {% endif %} </p>
+       
+        <h2>Esqueceu a Password?</h2>
+        <form action="{{url_for('forgot_handler')}}" method="post" >
+            <div class="form-group">
+                <label for="forgot-form-email">Email:</label>
+			    <input type="text" id="forgot-form-email" name="forgot-form-email" required/>
+            </div>
+            <button type="submit" >Recuperar Password</button>
+        </form>
+        
+
+        <div class="links">
+            <a href="login">Voltar ao Login</a>
+        </div>
+    </div>
+
+        {% include 'core/footer.html' %}
+
+    {% endblock %}

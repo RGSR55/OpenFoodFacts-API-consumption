@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% block title %}Registo{% endblock %}
+    {% block wrapper %}
+
+        {% include 'core/header.html' %}
+
+        
+    <div class="container">
+        <p style= "color:red; font-weight: bold;">{% if msg %} {{msg}} {% endif %} </p>
+        <h2>Registo</h2>
+        
+        <form action="{{url_for('register_handler')}}" method="post">
+
+
+                <label for="register-form-name">Nome</label>
+                <input type="text" id="register-form-name" name="register-form-name">
+
+            
+                <label for="register-form-email">Email</label>
+                <input type="text" id="register-form-email" name="register-form-email">
+            
+           
+                <label for="register-form-password">Password</label>
+                <input type="password" id="register-form-password" name="register-form-password">
+            
+            
+                <label for="register-form-repassword">Confirmar Password</label>
+                <input type="password" id="register-form-repassword" name="register-form-repassword">
+            
+            <button type="submit">Registar</button>
+        </form>
+        <div class="links">
+            <a href="login">Já tem uma conta? Login</a>
+        </div>
+    </div>
+
+        {% include 'core/footer.html' %}
+
+    {% endblock %}

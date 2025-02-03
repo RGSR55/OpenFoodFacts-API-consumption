@@ -1,0 +1,129 @@
+{% extends 'core/base.html' %}
+{% block title %}Galeria Responsiva{% endblock %}
+{% block wrapper %}
+
+    {% include 'core/header.html' %}
+
+    <style>
+        
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        
+        .produto-item {
+            width: 220px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 5px;
+            transition: transform 0.3s;
+           
+            
+        }
+
+        .produto-item:hover {
+            transform: scale(1.05);
+        }
+
+        .produto-item img {
+            width: 100%;
+            height: 100%;
+            
+            border-radius: 8px 8px 0 0;
+            
+         
+        }
+
+        .favorite-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #ff0000;
+        transition: transform 0.2s;
+    }
+    
+    .favorite-btn.active {
+        color: #ff4500; 
+        transform: scale(1.2);
+    }
+    
+    
+    .produto-info {
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #ffffff;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        display: none;
+    }
+    
+    
+    .produto-item:hover .produto-info {
+        display: block;
+    }
+
+        
+    </style>
+
+    
+    <div class="galeria">
+        {% for produto in produtos %}
+        <div class="produto-item">
+            <img src="{{ produto.imagem }}" alt="{{ produto.nome }}">
+             
+            <div class="produto-info">
+                
+                    {{produto.nome}}
+                    {% if produto.grade == "A" or produto.grade == "a" %}
+                        <img src="{{ url_for('static', filename='img/nutricional_a.png') }}" alt="Nutri-Score A">
+                    {% elif produto.grade == "B" or produto.grade == "b" %}
+                        <img src="{{ url_for('static', filename='img/nutricional_b.png') }}" alt="Nutri-Score B">
+                    {% elif produto.grade == "C" or produto.grade == "c" %}
+                        <img src="{{ url_for('static', filename='img/nutricional_c.png') }}" alt="Nutri-Score C">
+                    {% elif produto.grade == "D" or produto.grade == "d" %}
+                        <img src="{{ url_for('static', filename='img/nutricional_d.png') }}" alt="Nutri-Score D">
+                    {% elif produto.grade == "E" or produto.grade == "e" %}
+                        <img src="{{ url_for('static', filename='img/nutricional_e.png') }}" alt="Nutri-Score E">
+                    {% else %}
+                        <p>Sem info nutricional</p>
+                    {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <script>
+        var originalRatio = 220 / 150;
+
+        function redimensionarGaleria() {
+            var janelaLargura = document.body.clientWidth;
+            var fotos = document.getElementsByClassName('produto-item');
+            
+            var novaLargura = Math.floor(janelaLargura / 4) - 21;
+            var novaAltura = Math.floor(novaLargura / originalRatio);
+
+            for (var i = 0; i < fotos.length; i++) {
+                fotos[i].style.width = novaLargura + 'px';
+                fotos[i].style.height = novaAltura + 'px';
+            }
+        }
+
+        window.onload = redimensionarGaleria;
+        window.onresize = redimensionarGaleria;
+    </script>
+
+{% endblock %}

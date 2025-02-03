@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block wrapper %}
+<div id="wrapper" class="clearfix">
+
+	{% include 'core/header.html' %}
+
+	<section id="content">
+		<div class="content-wrap">
+			<div class="container clearfix">
+
+				<div class="row clearfix">
+
+					<div class="col-md-9">
+
+						<img src="{{ url_for('static', filename='img/avatar.jpg') }}" alt="Avatar" style="max-width: 84px;">
+						
+						{% if html_user %}
+							<div class="heading-block border-0">
+								
+								<span>{{html_user.email}}</span>
+								<h1>OLÁ {{html_user.firstname}} seja bem vindo de novo </h1>
+
+							</div>
+						{% else %}
+							<div class="heading-block border-0">
+								<h3>Nome Utilizador</h3>
+								<span>Email Utilizador</span>
+							</div>
+						{% endif %}
+
+						
+			<div class="links">
+					<a href="/">Logout</a>
+					
+			</div>
+																	
+	</section><!-- #content end -->
+
+	{% include 'core/footer.html' %}
+
+</div>
+{% endblock %}

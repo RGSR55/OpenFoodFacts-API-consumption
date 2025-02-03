@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% block title %}Login{% endblock %}
+    {% block wrapper %}
+
+        {% include 'core/header.html' %}
+
+    <div class="container">
+
+        <p style= "color:red; font-weight: bold;">{% if msg %} {{msg}} {% endif %} </p>
+        
+
+        <form action="{{url_for('login_handler')}}" method="post" >
+
+            <label for="login-form-email">Email:</label>
+			<input type="text" id="login-form-email" name="login-form-email"/>
+
+            <label for="login-form-password">Password:</label>
+			<input type="password" id="login-form-password" name="login-form-password"/>
+            
+            <p><button type="submit">Login</button></p>
+        </form>
+        
+        <div class="links">
+            <a href="registar">Registo</a>
+            <a href="forgot">Esqueceu a password?</a>
+        </div>
+    </div>
+
+        {% include 'core/footer.html' %}
+
+    {% endblock %}
