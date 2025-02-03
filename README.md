@@ -4,5 +4,5 @@ Basic Rest based Web API consumption based on Python, Flask and SQLAlchemy for O
 Setup/Installation:
 - Navigate to the project repository: https://github.com/RGSR55/OpenFoodFacts-API-consumption.git
 - Download or use the git clone command to clone the project to the preferred local machine directory.
-- Create the virtual environment (tpf_flask\Scripts\activate)
+- Create and activate the virtual environment 
 - Run the application (python tp5_index.py)
